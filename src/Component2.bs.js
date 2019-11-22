@@ -5,46 +5,23 @@ var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var Styles$ReactHooksTemplate = require("./Styles.bs.js");
 
-function useCounter(param) {
-  return React.useReducer((function (state, action) {
-                if (action) {
-                  return /* record */[
-                          /* count */state[/* count */0],
-                          /* show */!state[/* show */1]
-                        ];
-                } else {
-                  return /* record */[
-                          /* count */state[/* count */0] + 1 | 0,
-                          /* show */state[/* show */1]
-                        ];
-                }
-              }), /* record */[
-              /* count */0,
-              /* show */true
-            ]);
-}
-
 function Component2(Props) {
   var greeting = Props.greeting;
-  var match = useCounter(/* () */0);
-  var dispatch = match[1];
-  var state = match[0];
-  var message = "You've clicked this " + (String(state[/* count */0]) + " times(s)");
-  var match$1 = state[/* show */1];
+  var match = React.useState((function () {
+          return 0;
+        }));
+  var changeCounter = match[1];
   return React.createElement("div", undefined, React.createElement("button", {
                   className: Styles$ReactHooksTemplate.title,
                   onClick: (function (_event) {
-                      return Curry._1(dispatch, /* Click */0);
+                      return Curry._1(changeCounter, (function (counter) {
+                                    return counter + 1 | 0;
+                                  }));
                     })
-                }, message), React.createElement("button", {
-                  onClick: (function (_event) {
-                      return Curry._1(dispatch, /* Toggle */1);
-                    })
-                }, "Toggle greeting"), match$1 ? greeting : null);
+                }, greeting), String(match[0]));
 }
 
 var make = Component2;
 
-exports.useCounter = useCounter;
 exports.make = make;
 /* react Not a pure module */
