@@ -7,17 +7,17 @@ let card =
     flexDirection(column),
     alignItems(stretch),
     backgroundColor(white),
-    boxShadow(Shadow.box(~y=px(3), ~blur=px(5), rgba(0, 0, 0, 0.3))),
+    boxShadow(Shadow.box(~y=px(8), ~blur=px(5), rgba(100, 100, 0, 0.3))),
     /* You can add non-standard and other unsafe style declarations using the `unsafe` function, with strings as the two arguments. */
     unsafe("-webkit-overflow-scrolling", "touch"),
   ]);
 
-let title = style([fontSize(rem(1.5)), color(red)]);
+let title = style([fontSize(rem(1.0)), color(red)]);
 
 let actionButton = disabled =>
   style([
     background(disabled ? darkgray : white),
-    color(black),
+    color(gray),
     borderBottomStyle(solid),
-    borderRadius(px(3)),
+    borderRadius(px(9)),
   ]);

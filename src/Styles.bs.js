@@ -12,7 +12,7 @@ var card = Css.style(/* :: */[
           /* :: */[
             Css.backgroundColor(Css.white),
             /* :: */[
-              Css.boxShadow(Css.Shadow[/* box */0](undefined, Css.px(3), Css.px(5), undefined, undefined, Css.rgba(0, 0, 0, 0.3))),
+              Css.boxShadow(Css.Shadow[/* box */0](undefined, Css.px(8), Css.px(5), undefined, undefined, Css.rgba(100, 100, 0, 0.3))),
               /* :: */[
                 Css.unsafe("-webkit-overflow-scrolling", "touch"),
                 /* [] */0
@@ -24,7 +24,7 @@ var card = Css.style(/* :: */[
     ]);
 
 var title = Css.style(/* :: */[
-      Css.fontSize(Css.rem(1.5)),
+      Css.fontSize(Css.rem(1.0)),
       /* :: */[
         Css.color(Css.red),
         /* [] */0
@@ -35,11 +35,11 @@ function actionButton(disabled) {
   return Css.style(/* :: */[
               Css.background(disabled ? Css.darkgray : Css.white),
               /* :: */[
-                Css.color(Css.black),
+                Css.color(Css.gray),
                 /* :: */[
                   Css.borderBottomStyle(Css.solid),
                   /* :: */[
-                    Css.borderRadius(Css.px(3)),
+                    Css.borderRadius(Css.px(9)),
                     /* [] */0
                   ]
                 ]
