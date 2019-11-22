@@ -5,20 +5,30 @@ var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var Styles$ReactHooksTemplate = require("./Styles.bs.js");
 
+function on_click(state) {
+  return /* record */[
+          /* count */state[/* count */0] + 1 | 0,
+          /* show */state[/* show */1]
+        ];
+}
+
+function on_toggle(state) {
+  return /* record */[
+          /* count */state[/* count */0],
+          /* show */!state[/* show */1]
+        ];
+}
+
+function handler(state, action) {
+  if (action) {
+    return on_toggle(state);
+  } else {
+    return on_click(state);
+  }
+}
+
 function useCounter(param) {
-  return React.useReducer((function (state, action) {
-                if (action) {
-                  return /* record */[
-                          /* count */state[/* count */0],
-                          /* show */!state[/* show */1]
-                        ];
-                } else {
-                  return /* record */[
-                          /* count */state[/* count */0] + 1 | 0,
-                          /* show */state[/* show */1]
-                        ];
-                }
-              }), /* record */[
+  return React.useReducer(handler, /* record */[
               /* count */0,
               /* show */true
             ]);
@@ -26,7 +36,10 @@ function useCounter(param) {
 
 function Component3(Props) {
   Props.greeting;
-  var match = useCounter(/* () */0);
+  var match = React.useReducer(handler, /* record */[
+        /* count */0,
+        /* show */true
+      ]);
   var dispatch = match[1];
   var message = "You've clicked this " + (String(match[0][/* count */0]) + " times(s)");
   return React.createElement("div", undefined, React.createElement("button", {
@@ -41,6 +54,9 @@ function Component3(Props) {
 
 var make = Component3;
 
+exports.on_click = on_click;
+exports.on_toggle = on_toggle;
+exports.handler = handler;
 exports.useCounter = useCounter;
 exports.make = make;
 /* react Not a pure module */

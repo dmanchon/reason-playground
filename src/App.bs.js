@@ -13,7 +13,7 @@ function App(Props) {
                   greeting: "hello, click here!"
                 }), React.createElement("h1", undefined, "Reducer hook"), React.createElement(Component3$ReactHooksTemplate.make, {
                   greeting: "hello, click here!"
-                }));
+                }), React.createElement("h1", undefined, "Context hook"));
 }
 
 var make = App;
