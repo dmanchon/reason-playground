@@ -5,6 +5,11 @@ var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var Styles$ReactHooksTemplate = require("./Styles.bs.js");
 
+var initialState = /* record */[
+  /* count */0,
+  /* show */true
+];
+
 function on_click(state) {
   return /* record */[
           /* count */state[/* count */0] + 1 | 0,
@@ -28,18 +33,12 @@ function handler(state, action) {
 }
 
 function useCounter(param) {
-  return React.useReducer(handler, /* record */[
-              /* count */0,
-              /* show */true
-            ]);
+  return React.useReducer(handler, initialState);
 }
 
 function Component3(Props) {
   Props.greeting;
-  var match = React.useReducer(handler, /* record */[
-        /* count */0,
-        /* show */true
-      ]);
+  var match = React.useReducer(handler, initialState);
   var dispatch = match[1];
   var message = "You've clicked this " + (String(match[0][/* count */0]) + " times(s)");
   return React.createElement("div", undefined, React.createElement("button", {
@@ -54,6 +53,7 @@ function Component3(Props) {
 
 var make = Component3;
 
+exports.initialState = initialState;
 exports.on_click = on_click;
 exports.on_toggle = on_toggle;
 exports.handler = handler;
