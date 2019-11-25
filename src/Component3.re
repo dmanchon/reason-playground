@@ -8,6 +8,7 @@ type action =
   | Click
   | Toggle;
 
+let initialState = {count: 0, show: true};
 let on_click = state => {...state, count: succ(state.count)};
 let on_toggle = state => {...state, show: !state.show};
 
@@ -17,7 +18,7 @@ let handler = (state, action) =>
   | Toggle => on_toggle(state)
   };
 
-let useCounter = () => React.useReducer(handler, {count: 0, show: true});
+let useCounter = () => React.useReducer(handler, initialState);
 
 [@react.component]
 let make = (~greeting="hola") => {
